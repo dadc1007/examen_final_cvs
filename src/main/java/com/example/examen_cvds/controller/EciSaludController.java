@@ -2,6 +2,7 @@ package com.example.examen_cvds.controller;
 
 import com.example.examen_cvds.model.Appointment;
 import com.example.examen_cvds.service.EciSaludService;
+import com.example.examen_cvds.util.enums.Speciality;
 import com.example.examen_cvds.util.enums.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -43,5 +44,10 @@ public class EciSaludController {
     @GetMapping("/appointment")
     public ResponseEntity<List<Appointment>> getAppointments(@PathVariable String cc, @PathVariable Status status) {
         return ResponseEntity.ok().body(eciSaludService.getAppointmentsByStatus(cc, status));
+    }
+
+    @GetMapping("/specialities")
+    public ResponseEntity<List<Speciality>> getSpecialities() {
+        return ResponseEntity.ok().body(eciSaludService.getSpecialities());
     }
 }
